@@ -1,26 +1,58 @@
 # TO-DO: Complete the selection_sort() function below
-def selection_sort(arr):
+def selection_sort(A):
     # loop through n-1 elements
-    for i in range(0, len(arr) - 1):
-        cur_index = i
-        smallest_index = cur_index
+    for i in range(0, len(A) - 1):
+        curr_idx = i
         # TO-DO: find next smallest element
         # (hint, can do in 3 loc)
         # Your code here
-
+        for j in range(i+1, len(A)):
+            if A[curr_idx] > A[j]:
+                curr_idx = j
 
         # TO-DO: swap
         # Your code here
 
-    return arr
+        if curr_idx != i:
+            A[curr_idx], A[i] = A[i], A[curr_idx]
 
-
+    print ("Sorted array") 
+    for i in range(len(A)): 
+	    print("%d" %A[i]), 
+    return A
+# Traverse through all array elements 
 # TO-DO:  implement the Bubble Sort function below
-def bubble_sort(arr):
-    # Your code here
+# def bubble_sort(A): <---- I tired using my JS solution transcribed into Python... this didn't work at all
+#     # Your code here
+#     for i in range(len(A)):
+#         if i >0:
+#             i-=1
+#         for j < i:
+#             j=0
+#             if j > i:
+#                 j+=1
+#         if A[j] > A[i]:
+#             temp_value = A[j]
+#             A[j] = A[j+1]
+#             A[j+1] = temp_value
+#     return A
+def bubble_sort(A):
+    def swap(i, j):
+        A[i], A[j] = A[j], A[i]
 
+    n = len(A)
+    swapped = True
 
-    return arr
+    x = -1
+    while swapped:
+        swapped = False
+        x = x + 1
+        for i in range(1, n-x):
+            if A[i - 1] > A[i]:
+                swap(i - 1, i)
+                swapped = True
+                    
+    return A
 
 '''
 STRETCH: implement the Counting Sort function below
